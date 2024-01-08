@@ -1,6 +1,6 @@
-# 🏗 TipActionModule
+# TipActionModule
 
-The `TipActionModule` is a simple module that allows users to tip the author of a publication. It's based on the "Creating an Open Action" tutorial from the [Lens Docs](https://docs.lens.xyz/docs/creating-a-publication-action). And is based on [Scaffold-Lens](https://github.com/iPaulPro/scaffold-lens)
+The `TipActionModule` is a simple Open Action module that allows users to tip the author of a publication. It's based on the "Creating an Open Action" tutorial from the [Lens Docs](https://docs.lens.xyz/docs/creating-a-publication-action) and was built with [Scaffold-Lens](https://github.com/iPaulPro/scaffold-lens)
 
 Additions to the tutorial include:
 - ✅ Adds compliance with the Open Action [Module Metadata Standard](https://docs.lens.xyz/docs/module-metadata-standard)
@@ -8,45 +8,12 @@ Additions to the tutorial include:
 - ✅ Uses `SafeERC20` to transfer tokens
 - ✅ Uses `ReentrancyGuard` to prevent reentrancy attacks
 
-
-## Contents
-
-- [Requirements](#requirements)
-- [Debugging](#debugging)
-- [Using the TipActionModule Contract](#using-the-tipactionmodule-contract)
-- [About Scaffold-ETH 2](#about-scaffold-eth-2)
-
-## Requirements
-
-Before you begin, you need to install the following tools:
-
-- [Node (v18 LTS)](https://nodejs.org/en/download/)
-- [Git](https://git-scm.com/downloads)
-
-
-
-## Debugging
-
-You can debug your smart contracts using the Contract Debugger. If you haven't already, from the root directory, start your NextJS app:
-```shell
-yarn start
-```
-
-Then navigate to http://localhost:3000/debug to open the debugger. You can now call functions on your smart contracts and debug them in the browser.
-
-### Debugging the `TipActionModule`
-
-
-**Tip:** Use https://abi.hashex.org/ to encode the calldata for the `initializePublicationAction` and `processPublicationAction` functions.
-
-
-
 ## Using the TipActionModule Contract
 
 To use the live `TipActionModule` you can use the address and metadata below:
 
-| Network | Chain ID | Deployed Contract                                                                                                               | Metadata                                                                    |
-|---------|----------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Network | Chain ID | Deployed Contract                                                                                                               | Metadata                                                                     |
+|---------|----------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
 | Mumbai  | 80001    | [0x6111e258a6d00d805DcF1249900895c7aA0cD186](https://mumbai.polygonscan.com/address/0x6111e258a6d00d805DcF1249900895c7aA0cD186) | [link](https://gateway.irys.xyz/WzHPiYtDn5jYb7tO6pi13lNg5ZlcglPdrosoHDAA8co) |
 
 The `TipActionModule` contract can be used as an Open Action Module on Lens Protocol.
@@ -162,14 +129,17 @@ if (settings.initializeCalldata) {
    You can check the allowance using the ERC-20 `allowance` function directly, or use the Lens SDK Client:
 
     ```typescript
+    import type { LensClient, ApprovedModuleAllowanceAmountRequest } from '@lens-protocol/client';
+    import { BigNumber, ethers } from 'ethers';
+   
     const needsApproval = async (
       lensClient: LensClient,
-      currency: string,
+      currency: { address: string, decimals: number },
       tipAmount: BigNumber,
       actionModule: string,
     ): Promise<boolean> => {
       const req: ApprovedModuleAllowanceAmountRequest = {
-        currencies: [currency],
+        currencies: [currency.address],
         unknownOpenActionModules: [actionModule],
       };
       
@@ -179,7 +149,10 @@ if (settings.initializeCalldata) {
       const allowances = res.unwrap();
       if (!allowances.length) return true;
     
-      const valueInWei = ethers.utils.parseEther(allowances[0].allowance.value);
+      const valueInWei = ethers.utils.parseUnits(
+        allowances[0].allowance.value, 
+        currency.decmals,
+      );
       return tipAmount.gt(valueInWei);
     };
     ```
@@ -187,6 +160,6 @@ if (settings.initializeCalldata) {
 
 ## About Scaffold-Lens
 
-Scaffold-Lens is an open-source toolkit made by Paul Burke for building Lens Smart Posts and Open Actions dapps.
+Scaffold-Lens is an open-source toolkit, based on Scaffold-ETH 2, made by Paul Burke for building Lens Smart Posts and Open Actions dapps.
 
 Learn more about Scaffold-Lens and read the docs [here](https://github.com/iPaulPro/scaffold-lens).
