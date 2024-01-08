@@ -2,11 +2,23 @@
 
 The `TipActionModule` is a simple Open Action module that allows users to tip the author of a publication. It's based on the "Creating an Open Action" tutorial from the [Lens Docs](https://docs.lens.xyz/docs/creating-a-publication-action) and was built with [Scaffold-Lens](https://github.com/iPaulPro/scaffold-lens)
 
+It allows to send a tip to a post created in Wrapped Matic, Wrapped Eth or USDC-E
+
 Additions to the tutorial include:
 - ✅ Adds compliance with the Open Action [Module Metadata Standard](https://docs.lens.xyz/docs/module-metadata-standard)
 - ✅ Checks token allowance before attempting to send a tip
 - ✅ Uses `SafeERC20` to transfer tokens
 - ✅ Uses `ReentrancyGuard` to prevent reentrancy attacks
+
+
+## Try it out!
+
+[Orna Testnet Smart Post](https://testnet.orna.art/c/0x0342-0x04)
+
+You need test Wrapped Matic, USDC or WETH to try it out. Here are some faucets to get some:
+- [https://faucet.paradigm.xyz/](https://faucet.paradigm.xyz/)
+- [https://www.alchemy.com/faucets](https://www.alchemy.com/faucets)
+- [https://faucet.polygon.technology/](https://faucet.polygon.technology/)
 
 ## Using the TipActionModule Contract
 
@@ -158,8 +170,22 @@ if (settings.initializeCalldata) {
     ```
 ---
 
+## Tips API
+
+This API is connected to a database which indexes all the incoming tips for the deployed contract. 
+
+[https://collectzapi.azurewebsites.net/swagger/index.html](https://collectzapi.azurewebsites.net/swagger/index.html)
+
+The functions to use are:
+- TipsPost (get the tips for that Post)
+- TipsPostTotal (get the totals per currency for that Post)
+- TipsProfile (get the tips given or received by a profile per currency for that Post)
+
+Make sure to include testnet=true when working on Mumbai.
+
+
 ## About Scaffold-Lens
 
-Scaffold-Lens is an open-source toolkit, based on Scaffold-ETH 2, made by Paul Burke for building Lens Smart Posts and Open Actions dapps.
+Scaffold-Lens is an open-source toolkit, based on Scaffold-ETH 2, made by Paul Burke for building Lens Smart Posts and Open Actions.
 
 Learn more about Scaffold-Lens and read the docs [here](https://github.com/iPaulPro/scaffold-lens).
