@@ -47,7 +47,7 @@ To use the live `TipActionModule` you can use the address and metadata below:
 
 | Network | Chain ID | Deployed Contract                                                                                                               | Metadata                                                                    |
 |---------|----------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| Mumbai  | 80001    | [0xbb1B9C55F943Bd2edCa0cDfa2F4Bb41Ea2c49a44](https://mumbai.polygonscan.com/address/0xbb1B9C55F943Bd2edCa0cDfa2F4Bb41Ea2c49a44) | [link](https://devnet.irys.xyz/DmTRxYr0BR02aWUZ2R8UB12RO31r4qmqScp9fuuNIRY) |
+| Mumbai  | 80001    | [0x6111e258a6d00d805DcF1249900895c7aA0cD186](https://mumbai.polygonscan.com/address/0x6111e258a6d00d805DcF1249900895c7aA0cD186) | [link](https://gateway.irys.xyz/WzHPiYtDn5jYb7tO6pi13lNg5ZlcglPdrosoHDAA8co) |
 
 The `TipActionModule` contract can be used as an Open Action Module on Lens Protocol.
 
@@ -88,7 +88,7 @@ You can initialize the action and set the tip receiver using the Lens SDK Client
 ```typescript
 import { type LensClient, type OnchainPostRequest, encodeData } from '@lens-protocol/client';
 
-const openActionContract = "0xce962e5ade34202489e04bb8ed258f8d079eee3e";
+const openActionContract = "0x6111e258a6d00d805DcF1249900895c7aA0cD186";
 
 const postRequest: OnchainPostRequest = { contentURI };
 
@@ -111,7 +111,7 @@ await lensClient.publication.postOnchain(postRequest);
 To support executing a tip action, you can create an `act` transaction as usual, supplying the currency and amount to tip as the process call data.
 
 ```typescript
-const tipActionContract = "0xce962e5ade34202489e04bb8ed258f8d079eee3e";
+const tipActionContract = "0x6111e258a6d00d805DcF1249900895c7aA0cD186";
 
 // get the module settings and metadata
 const settings = post.openActionModules.find(

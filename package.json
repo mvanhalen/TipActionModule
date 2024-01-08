@@ -1,8 +1,8 @@
 {
   "name": "tipactionmodule",
   "version": "1.0.0",
-  "description": "Tip open action contract for Lens smart posts. By Orna based on scaffold-lens and Lens Protocol example contracts.",
-  "main": ".",
+  "description": "Tip open action contract for Lens smart posts. By Orna based on scaffold-lens and Lens Protocol example contracts. Deployed on https://orna.art",
+  "main": "/contracts/TipActionModule.sol",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
