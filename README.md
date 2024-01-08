@@ -2,7 +2,7 @@
 
 The `TipActionModule` is a simple Open Action module that allows users to tip the author of a publication. It's based on the "Creating an Open Action" tutorial from the [Lens Docs](https://docs.lens.xyz/docs/creating-a-publication-action) and was built with [Scaffold-Lens](https://github.com/iPaulPro/scaffold-lens)
 
-It allows to send a tip to a post created in Wrapped Matic, Wrapped Eth or USDC-E
+It allows to send a tip to a post creator in Wrapped Matic, Wrapped Eth or USDC-E
 
 Additions to the tutorial include:
 - ✅ Adds compliance with the Open Action [Module Metadata Standard](https://docs.lens.xyz/docs/module-metadata-standard)
