@@ -1,0 +1,22 @@
+{
+  "name": "tipactionmodule",
+  "version": "1.0.0",
+  "description": "Tip open action contract for Lens smart posts. By Orna based on scaffold-lens and Lens Protocol example contracts.",
+  "main": ".",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Sol",
+    "Polygon",
+    "Contract",
+    "Blockchain",
+    "Lens",
+    "Tipping"
+  ],
+  "author": "Martijn van Halen and Paul Burke",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.1"
+  }
+}
