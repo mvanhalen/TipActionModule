@@ -4,7 +4,6 @@ pragma solidity ^0.8.19;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import {Types} from "./libraries/Types.sol";
 import {IPublicationActionModule} from "./interfaces/IPublicationActionModule.sol";
 import {HubRestricted} from "./base/HubRestricted.sol";
@@ -21,15 +20,13 @@ contract TipActionModule is
     Ownable,
     HubRestricted,
     LensModuleMetadata,
-    LensModuleRegistrant,
-    ReentrancyGuard
+    LensModuleRegistrant
 {
     using SafeERC20 for IERC20;
 
     error CurrencyNotWhitelisted();
-    error TipAmountCannotBeZero();
     error TipReceiverNotProvided();
-    error TipAmountNotApproved();
+    error TipAmountCannotBeZero();
 
     event TipReceiverRegistered(
         uint256 indexed profileId,
@@ -107,7 +104,7 @@ contract TipActionModule is
 
     function processPublicationAction(
         Types.ProcessActionParams calldata params
-    ) external override onlyHub nonReentrant returns (bytes memory) {
+    ) external override onlyHub returns (bytes memory) {
         (address currency, uint256 tipAmount) = abi.decode(
             params.actionModuleData,
             (address, uint256)
@@ -126,15 +123,6 @@ contract TipActionModule is
         ];
 
         IERC20 token = IERC20(currency);
-
-        uint256 allowance = token.allowance(
-            params.transactionExecutor,
-            address(this)
-        );
-
-        if (allowance < tipAmount) {
-            revert TipAmountNotApproved();
-        }
 
         emit TipCreated(
             params.transactionExecutor,
