@@ -27,6 +27,7 @@ To use the live `TipActionModule` you can use the address and metadata below:
 | Network | Chain ID | Deployed Contract                                                                                                               | Metadata                                                                     |
 |---------|----------|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
 | Mumbai  | 80001    | [0x6111e258a6d00d805DcF1249900895c7aA0cD186](https://mumbai.polygonscan.com/address/0x6111e258a6d00d805DcF1249900895c7aA0cD186) | [link](https://gateway.irys.xyz/WzHPiYtDn5jYb7tO6pi13lNg5ZlcglPdrosoHDAA8co) |
+| Polygon PoS  | 137    | [0x22cb67432C101a9b6fE0F9ab542c8ADD5DD48153](https://polygonscan.com/address/0x22cb67432C101a9b6fE0F9ab542c8ADD5DD48153) | [link](https://gateway.irys.xyz/o4uWxVq92REvMD0rW537XV5unr6rafZb2gzEj__Oy9A) |
 
 The `TipActionModule` contract can be used as an Open Action Module on Lens Protocol.
 
