@@ -13,7 +13,10 @@ Additions to the tutorial include:
 
 ## Try it out!
 
-[Orna Testnet Smart Post](https://testnet.orna.art/c/0x0342-0x04)
+[Orna Testnet (Polygon Mumbai) Smart Post](https://testnet.orna.art/c/0x0342-0x04)
+
+[Orna Mainnet (Polygon PoS) Smart Post](https://orna.art/c/0x01f629-0x04)
+
 
 You need test Wrapped Matic, USDC or WETH to try it out. Here are some faucets to get some:
 - [https://faucet.paradigm.xyz/](https://faucet.paradigm.xyz/)
