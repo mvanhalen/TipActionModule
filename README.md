@@ -8,7 +8,6 @@ Additions to the tutorial include:
 - ✅ Adds compliance with the Open Action [Module Metadata Standard](https://docs.lens.xyz/docs/module-metadata-standard)
 - ✅ Checks token allowance before attempting to send a tip
 - ✅ Uses `SafeERC20` to transfer tokens
-- ✅ Uses `ReentrancyGuard` to prevent reentrancy attacks
 
 
 ## Try it out!
@@ -16,6 +15,9 @@ Additions to the tutorial include:
 [Orna Testnet (Polygon Mumbai) Smart Post](https://testnet.orna.art/c/0x0342-0x04)
 
 [Orna Mainnet (Polygon PoS) Smart Post](https://orna.art/c/0x01f629-0x04)
+
+Questions? Ask the GPT.
+[Lens Smart Posts and Open Actions GTP](https://chat.openai.com/g/g-GUp3kURP7-lens-smart-posts-and-open-actions-faq)
 
 
 You need test Wrapped Matic, USDC or WETH to try it out. Here are some faucets to get some:
